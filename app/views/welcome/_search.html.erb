@@ -1,0 +1,18 @@
+<div class='form search' >   
+<div class="form-group row">
+<%= form_tag 'search_center', remote: true, method: :get, id: 'search-form' do %>
+    <div class="col-sm-10">
+        
+    <%= text_field_tag :name, params[:name], placeholder: 'Search Country / State /etc name', 
+    autofocus: true, class: 'form-control search-box input-lg' %>
+    </div>
+     
+     <div class="col-sm-2" >
+     <%= button_tag(type: :submit, class: 'btn btn-lg btn-primary') do %>
+        <i class='fa fa-search'></i> Search
+     <% end  %>  
+
+     </div>  
+ <% end %>
+</div> 
+</div>

@@ -1,0 +1,183 @@
+<div class='form'>   
+<div class="form-group row" >
+ <%= form_tag 'select_center',remote: true, method: :get, id: 'select-form',
+    class: 'form-inline' do  %>
+    <div class="col-sm-2" style="width:20%">
+        <%= select_tag "country", options_from_collection_for_select(@countries, "id", "name"),class:'form-control' ,include_blank: 'Country'%> 
+    </div>
+    <div class="col-sm-2" style="width:15%">
+        <%= select_tag "state", options_from_collection_for_select(@state, "id", "name"),class:'form-control' ,include_blank: 'State'%> 
+     </div>
+     <div class="col-sm-2" style="width:18%">
+        <%= select_tag "district", options_from_collection_for_select(@district, "id", "name"),class:'form-control' ,include_blank: 'District'%> 
+     </div>
+     <div class="col-sm-2" style="width:22%">
+        <%= select_tag "sub_district", options_from_collection_for_select(@sub_district, "id", "name"),class:'form-control' ,include_blank: 'Sub_District'%> 
+     </div>
+     <div class="col-sm-2" style="width:20%">
+     <%= select_tag "city", options_from_collection_for_select(@city, "id", "name"),class:'form-control' ,include_blank: 'City'%> 
+     </div>
+     
+     <div class="col-sm-2" style="position:absolute;left:85%">
+     <%= button_tag(type: :submit, class: 'btn btn-md btn-primary') do %>
+        <i class='fa fa-search'></i> Search
+     <% end  %>  
+     </div>  
+ <% end %>
+</div> 
+</div>
+
+<script>
+$(document).ready(function(){
+    $("#country").change(function(){
+      let v = $("#country").val();
+      alert("The text has been changed to " +v);
+      populateState(v);
+
+      function populateState(countryID) {
+        $.ajax({
+            url: `/populate_state_from_selected_country`,
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: { country_id: countryID },
+            success: data => {
+                 console.log(data);
+                const $stateDropdown = document.getElementById('state');
+                const $districtDropdown = document.getElementById('district');
+                const $subDistrictDropdown = document.getElementById('sub_district');
+                const $cityDropdown = document.getElementById('city');
+                $stateDropdown.innerHTML = '';
+                if (data.length > 0) {
+                    
+                    $stateDropdown.innerHTML += '<option value="">State</option>';
+
+                    for (const value of data) {
+                      console.log(value["name"]);
+                        $stateDropdown.innerHTML += `<option value="${value["name"]}">${value["name"]}</option>`;
+                    }
+                    $("#state").prop('disabled',false);
+                    $("#district").prop('disabled',false);
+                    $("#sub_district").prop('disabled',false);
+                    $("#city").prop('disabled',false);
+                } else {
+                    $stateDropdown.innerHTML += `<option value="">We dont have center here.</option>`;
+                    $("#state").prop('disabled','disabled');
+                    $("#district").prop('disabled','disabled');
+                    $("#sub_district").prop('disabled','disabled');
+                    $("#city").prop('disabled','disabled');
+                }
+            }
+        });
+    }
+    });
+ });
+
+ $("#state").change(function(){
+  let v = $("#state").val();
+  alert("The text has been changed to " +v);
+  populateDistrict(v);
+  
+
+  function populateDistrict(stateID) {
+    $.ajax({
+        url: `/populate_district_from_selected_state`,
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: { state_id: stateID },
+        success: data => {
+             console.log(data);
+            const $districtDropdown = document.getElementById('district');
+            $districtDropdown.innerHTML = '';
+            if (data.length > 0) {
+                $districtDropdown.innerHTML += '<option value="">District</option>';
+                for (const value of data) {
+                  console.log(value["name"]);
+                    $districtDropdown.innerHTML += `<option value="${value["name"]}">${value["name"]}</option>`;
+                }
+                $("#district").prop('disabled',false);
+                $("#sub_district").prop('disabled',false);
+                $("#city").prop('disabled',false);
+            } else {
+                $districtDropdown.innerHTML += `<option value="">We dont have center here.</option>`;
+                $("#district").prop('disabled','disabled');
+                $("#sub_district").prop('disabled','disabled');
+                $("#city").prop('disabled','disabled');
+            }
+        }
+    });
+  }
+});
+
+
+$("#district").change(function(){
+    let v = $("#district").val();
+    alert("The text has been changed to " +v);
+    populateSubDistrict(v);
+  
+    function populateSubDistrict(districtID) {
+      $.ajax({
+          url: `/populate_sub_district_from_selected_district`,
+          type: 'GET',
+          dataType: 'json',
+          contentType: 'application/json',
+          data: { district_id: districtID },
+          success: data => {
+               console.log(data);
+              const $subDistrictDropdown = document.getElementById('sub_district');
+              $subDistrictDropdown.innerHTML = '';
+              if (data.length > 0) {
+                  $subDistrictDropdown.innerHTML += '<option value="">Sub-District</option>';
+                  for (const value of data) {
+                    console.log(value["name"]);
+                      $subDistrictDropdown.innerHTML += `<option value="${value["name"]}">${value["name"]}</option>`;
+                  }
+                  $("#sub_district").prop('disabled',false);
+                  $("#city").prop('disabled',false);
+              } else {
+                  $subDistrictDropdown.innerHTML += `<option value="">We dont have center here.</option>`;
+                  $("#sub_district").prop('disabled','disabled');
+                  $("#city").prop('disabled','disabled');
+              }
+          }
+      });
+    }
+  });
+
+  $("#sub_district").change(function(){
+    let v = $("#sub_district").val();
+    alert("The text has been changed to " +v);
+    populateCity(v);
+  
+    function populateCity(cityID) {
+      $.ajax({
+          url: `/populate_city_from_selected_sub_district`,
+          type: 'GET',
+          dataType: 'json',
+          contentType: 'application/json',
+          data: { city_id: cityID },
+          success: data => {
+               console.log(data);
+              const $cityDropdown = document.getElementById('city');
+              $cityDropdown.innerHTML = '';
+              if (data.length > 0) {
+                  $cityDropdown.innerHTML += '<option value="">City/Town</option>';
+                  for (const value of data) {
+                    console.log(value["name"]);
+                      $cityDropdown.innerHTML += `<option value="${value["name"]}">${value["name"]}</option>`;
+                  }
+                  $("#city").prop('disabled',false);
+              } else {
+                  $cityDropdown.innerHTML += `<option value="">We dont have center here.</option>`;
+                  $("#city").prop('disabled','disabled');
+              }
+          }
+      });
+    }
+  });
+
+
+</script>
+
+

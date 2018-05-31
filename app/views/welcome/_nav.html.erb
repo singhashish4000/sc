@@ -1,0 +1,29 @@
+<div class="navbar navbar-transparent navbar-fixed-top">
+<div class="container-fluid">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">Saryodya</a>
+  </div>  
+  <div class="navbar-collapse collapse navbar-responsive-collapse" style='float:right'>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Create Center", new_center_path  %></li>
+      <li><%= link_to "Link3", "/path3"  %></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container" style='padding:0px'>
+<div class="row">
+  <div class="col-lg-9">
+    <%= bootstrap_flash %>
+    <%= yield %>
+  </div>
+</div><!--/row-->
+
+
+</div> <!-- /container -->

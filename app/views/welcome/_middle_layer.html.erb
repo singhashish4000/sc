@@ -1,0 +1,65 @@
+
+    <div class='results-block'>
+        <%= bootstrap_flash %>
+    </div>
+ 
+<% if @center %>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 results" >
+      <h3>List of All Center's:</h3>
+      <div class="container">
+  <div class="col-md-10">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>No of volunters</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>District</th>
+            <th>Sub district</th>
+            <th>Town village</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @center.each do |center| %>
+            <%
+            country_name = Country.find(center.country_id)
+            @center_country = country_name.name
+      
+            state_name = State.find(center.state_id)
+            @center_state = state_name.name
+      
+            district_name = District.find(center.district_id)
+            @center_district = district_name.name
+      
+            sub_district_name = SubDistrict.find(center.sub_district_id)
+            @center_sub_district = sub_district_name.name
+      
+            city_name = TownVillage.find(center.town_village_id)
+            @center_city = city_name.name
+            %>
+            <tr>
+              <td><%= link_to center.name, center %></td>
+              <td><%= center.address %></td>
+              <td><%= center.no_of_volunters %></td>
+              <td><%= @center_country %></td>
+              <td><%= @center_state %></td>
+              <td><%= @center_district %></td>
+              <td><%= @center_sub_district %></td>
+              <td><%= @center_city %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+    </div>
+  </div>
+</div>
+<% end %> 

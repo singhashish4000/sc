@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="col-md-10">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Name:</strong>
+        <%= @center.name %>
+      </p>
+
+      <p>
+        <strong>Address:</strong>
+        <%= @center.address %>
+      </p>
+
+      <p>
+        <strong>No of volunters:</strong>
+        <%= @center.no_of_volunters %>
+      </p>
+
+      <p>
+        <strong>Country:</strong>
+        <%= @center_country %>
+      </p>
+
+      <p>
+        <strong>State:</strong>
+        <%= @center_state %>
+      </p>
+
+      <p>
+        <strong>District:</strong>
+        <%= @center_district %>
+      </p>
+
+      <p>
+        <strong>Sub district:</strong>
+        <%= @center_sub_district %>
+      </p>
+
+      <p>
+        <strong>Town village:</strong>
+        <%= @center_city %>
+      </p>
+
+      <%= link_to 'Edit', edit_center_path(@center) %> |
+      <%= link_to 'Back', centers_path %>
+  </div>
+</div>      

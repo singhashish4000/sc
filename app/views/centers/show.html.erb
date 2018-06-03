@@ -1,6 +1,25 @@
 <div class="container">
   <div class="col-md-10">
       <p id="notice"><%= notice %></p>
+     
+        <%
+        center = @center 
+
+        country_name = Country.find(center.country_id)
+        @center_country = country_name.name
+  
+        state_name = State.find(center.state_id)
+        @center_state = state_name.name
+  
+        district_name = District.find(center.district_id)
+        @center_district = district_name.name
+  
+        sub_district_name = SubDistrict.find(center.sub_district_id)
+        @center_sub_district = sub_district_name.name
+  
+        city_name = TownVillage.find(center.town_village_id)
+        @center_city = city_name.name
+        %> 
 
       <p>
         <strong>Name:</strong>
@@ -13,8 +32,8 @@
       </p>
 
       <p>
-        <strong>No of volunters:</strong>
-        <%= @center.no_of_volunters %>
+        <strong>No of volenters:</strong>
+        <%= @center.no_of_volenters %>
       </p>
 
       <p>

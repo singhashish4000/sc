@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 gem 'simple_form'
 
+gem 'devise'
+
 gem 'bootstrap-generators', '~> 3.3.4'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS

@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
        
     end   
 
+
     def select
         if params[:country].blank? 
             flash.now[:danger] = 'Please enter name to search'
@@ -20,14 +21,27 @@ class WelcomeController < ApplicationController
  
             state_name = params[:state] 
             s = State.where(name: state_name).pluck(:id) if state_name.present?       
-            # d = District.where(state_id: s.id).pluck(:id) if s.present?
-            # sd = SubDistrict.where(district_id: d.id).pluck(:id) if d.present?
-            # t = TownVillage.where(sub_district_id: sd.id).pluck(:id) if sd.present?
+
+            district_name = params[:district]
+            d = District.where(name: district_name).pluck(:id) if district_name.present?
+
+            sub_district_name = params[:sub_district]
+            sd = SubDistrict.where(name: sub_district_name).pluck(:id) if sub_district_name.present?
+
+            city_name = params[:city]
+            t = SubDistrict.where(name: city_name).pluck(:id) if city_name.present?
            
-            if state_name.blank? 
+            if country_id.present? && state_name.blank? && district_name.blank? && sub_district_name.blank? && city_name.blank?
+                flash.now[:success] = 'Found following center'
                 @center = Center.where(country_id: c) 
-            else
+            elsif country_id.present? && state_name.present? && district_name.blank? && sub_district_name.blank? && city_name.blank?
                 @center = Center.where(country_id: c,state_id: s)
+            elsif country_id.present? && state_name.present? && district_name.present? && sub_district_name.blank? && city_name.blank?
+                @center = Center.where(country_id: c,state_id: s,district_id: d)
+            elsif country_id.present? && state_name.present? && district_name.present? && sub_district_name.present? && city_name.blank?
+                @center = Center.where(country_id: c,state_id: s,district_id: d,sub_district_id: sd)
+            elsif country_id.present? && state_name.present? && district_name.present? && sub_district_name.present? && city_name.present?
+                @center = Center.where(country_id: c,state_id: s,district_id: d,sub_district_id: sd,town_village_id: t)                
             end
 
         end 
@@ -38,6 +52,7 @@ class WelcomeController < ApplicationController
         if params[:name].blank? 
             flash.now[:danger] = 'Please enter name to search'
         else 
+            flash.now[:success] = 'Found following center'
            name = (params[:name])
            c_id = Country.where("name LIKE ?", "%"+name+"%").pluck(:id);
            s_id = State.where("name LIKE ?", "%"+name+"%").pluck(:id); 

@@ -1,0 +1,125 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Associates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company name</th>
+      <th>Title</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Mobile number</th>
+      <th>Landline number</th>
+      <th>Bussiness category</th>
+      <th>Address building</th>
+      <th>Address street</th>
+      <th>Address landmark</th>
+      <th>Address area</th>
+      <th>Address city</th>
+      <th>Address pincode</th>
+      <th>Contact person</th>
+      <th>Contact person designation</th>
+      <th>Fax number</th>
+      <th>Fax number two</th>
+      <th>Toll free number</th>
+      <th>Toll free number two</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Display hours status</th>
+      <th>Year of establishment</th>
+      <th>Annual turnover</th>
+      <th>Number of employees</th>
+      <th>Professional association</th>
+      <th>Certifications</th>
+      <th>Payment mode</th>
+      <th>Monday from</th>
+      <th>Monday to</th>
+      <th>Monday status</th>
+      <th>Tuesday from</th>
+      <th>Tuesday to</th>
+      <th>Tuesday status</th>
+      <th>Wednesday from</th>
+      <th>Wednesday to</th>
+      <th>Wednesday status</th>
+      <th>Thursday from</th>
+      <th>Thursday to</th>
+      <th>Thursday status</th>
+      <th>Friday from</th>
+      <th>Friday to</th>
+      <th>Friday status</th>
+      <th>Saturday from</th>
+      <th>Saturday to</th>
+      <th>Saturday status</th>
+      <th>Sunday from</th>
+      <th>Sunday to</th>
+      <th>Sunday status</th>
+      <th>Center</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @associates.each do |associate| %>
+      <tr>
+        <td><%= associate.company_name %></td>
+        <td><%= associate.title %></td>
+        <td><%= associate.first_name %></td>
+        <td><%= associate.last_name %></td>
+        <td><%= associate.mobile_number %></td>
+        <td><%= associate.landline_number %></td>
+        <td><%= associate.bussiness_category %></td>
+        <td><%= associate.address_building %></td>
+        <td><%= associate.address_street %></td>
+        <td><%= associate.address_landmark %></td>
+        <td><%= associate.address_area %></td>
+        <td><%= associate.address_city %></td>
+        <td><%= associate.address_pincode %></td>
+        <td><%= associate.contact_person %></td>
+        <td><%= associate.contact_person_designation %></td>
+        <td><%= associate.fax_number %></td>
+        <td><%= associate.fax_number_two %></td>
+        <td><%= associate.toll_free_number %></td>
+        <td><%= associate.toll_free_number_two %></td>
+        <td><%= associate.email_id %></td>
+        <td><%= associate.website %></td>
+        <td><%= associate.display_hours_status %></td>
+        <td><%= associate.year_of_establishment %></td>
+        <td><%= associate.annual_turnover %></td>
+        <td><%= associate.number_of_employees %></td>
+        <td><%= associate.professional_association %></td>
+        <td><%= associate.certifications %></td>
+        <td><%= associate.payment_mode %></td>
+        <td><%= associate.monday_from %></td>
+        <td><%= associate.monday_to %></td>
+        <td><%= associate.monday_status %></td>
+        <td><%= associate.tuesday_from %></td>
+        <td><%= associate.tuesday_to %></td>
+        <td><%= associate.tuesday_status %></td>
+        <td><%= associate.wednesday_from %></td>
+        <td><%= associate.wednesday_to %></td>
+        <td><%= associate.wednesday_status %></td>
+        <td><%= associate.thursday_from %></td>
+        <td><%= associate.thursday_to %></td>
+        <td><%= associate.thursday_status %></td>
+        <td><%= associate.friday_from %></td>
+        <td><%= associate.friday_to %></td>
+        <td><%= associate.friday_status %></td>
+        <td><%= associate.saturday_from %></td>
+        <td><%= associate.saturday_to %></td>
+        <td><%= associate.saturday_status %></td>
+        <td><%= associate.sunday_from %></td>
+        <td><%= associate.sunday_to %></td>
+        <td><%= associate.sunday_status %></td>
+        <td><%= associate.center %></td>
+        <td><%= link_to 'Show', associate %></td>
+        <td><%= link_to 'Edit', edit_associate_path(associate) %></td>
+        <td><%= link_to 'Destroy', associate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Associate', new_associate_path %>

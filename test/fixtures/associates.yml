@@ -1,0 +1,105 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  title: MyString
+  first_name: MyString
+  last_name: MyString
+  mobile_number: 1
+  landline_number: 1
+  bussiness_category: MyString
+  address_building: MyString
+  address_street: MyString
+  address_landmark: MyString
+  address_area: MyString
+  address_city: MyString
+  address_pincode: 1
+  contact_person: MyString
+  contact_person_designation: MyString
+  fax_number: 1
+  fax_number_two: 1
+  toll_free_number: 1
+  toll_free_number_two: 1
+  email_id: MyString
+  website: MyString
+  display_hours_status: false
+  year_of_establishment: 1
+  annual_turnover: 1
+  number_of_employees: MyString
+  professional_association: MyString
+  certifications: MyString
+  payment_mode_id: 
+  monday_from: MyString
+  monday_to: MyString
+  monday_status: false
+  tuesday_from: MyString
+  tuesday_to: MyString
+  tuesday_status: false
+  wednesday_from: MyString
+  wednesday_to: MyString
+  wednesday_status: false
+  thursday_from: MyString
+  thursday_to: MyString
+  thursday_status: false
+  friday_from: MyString
+  friday_to: MyString
+  friday_status: false
+  saturday_from: MyString
+  saturday_to: MyString
+  saturday_status: false
+  sunday_from: MyString
+  sunday_to: MyString
+  sunday_status: false
+  center_id: 
+
+two:
+  company_name: MyString
+  title: MyString
+  first_name: MyString
+  last_name: MyString
+  mobile_number: 1
+  landline_number: 1
+  bussiness_category: MyString
+  address_building: MyString
+  address_street: MyString
+  address_landmark: MyString
+  address_area: MyString
+  address_city: MyString
+  address_pincode: 1
+  contact_person: MyString
+  contact_person_designation: MyString
+  fax_number: 1
+  fax_number_two: 1
+  toll_free_number: 1
+  toll_free_number_two: 1
+  email_id: MyString
+  website: MyString
+  display_hours_status: false
+  year_of_establishment: 1
+  annual_turnover: 1
+  number_of_employees: MyString
+  professional_association: MyString
+  certifications: MyString
+  payment_mode_id: 
+  monday_from: MyString
+  monday_to: MyString
+  monday_status: false
+  tuesday_from: MyString
+  tuesday_to: MyString
+  tuesday_status: false
+  wednesday_from: MyString
+  wednesday_to: MyString
+  wednesday_status: false
+  thursday_from: MyString
+  thursday_to: MyString
+  thursday_status: false
+  friday_from: MyString
+  friday_to: MyString
+  friday_status: false
+  saturday_from: MyString
+  saturday_to: MyString
+  saturday_status: false
+  sunday_from: MyString
+  sunday_to: MyString
+  sunday_status: false
+  center_id: 

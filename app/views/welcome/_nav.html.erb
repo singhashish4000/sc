@@ -1,4 +1,4 @@
-<div class="navbar navbar-transparent navbar-fixed-top">
+<div class="navbar navbar-default navbar-fixed-top" style='opacity: 0.8'>
 <div class="container-fluid">
   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
     <span class="icon-bar"></span>
@@ -10,17 +10,28 @@
   </div>  
   <div class="navbar-collapse collapse navbar-responsive-collapse" style='float:right'>
     <ul class="nav navbar-nav">
-      <li><%= link_to "Create Center", new_center_path  %></li>
-      <li><%= link_to "Link3", "/path3"  %></li>
+      <% if  volenter_signed_in? && current_volenter.is_admin? %>
+        <li><%= link_to "Create Center", new_center_path  %></li>
+      <% end %>  
+      <li><%= link_to "Bussiness Listing", new_associate_path  %></li>
+      <% if volenter_signed_in? %>
+        <li><%= link_to "My Profile", volenter_path(:id => current_volenter.id) %></li>
+        <li><%= link_to "Sign out",  destroy_volenter_session_path, method: :delete%></li>
+      <% else %>
+        <li><%= link_to "Sign in",  new_volenter_registration_path %></li>
+        <li><%= link_to "Log in",  new_volenter_session_path %></li>
+      <% end %>  
     </ul>
   </div>
 </div>
 </div>
 
-<div class="container" style='padding:0px'>
+<div class="container">
 <div class="row">
-  <div class="col-lg-9">
-    <%= bootstrap_flash %>
+  <div class="col-lg-12">
+    <span style='position:relative;top:100px' class='col-lg-12'>
+       <%= bootstrap_flash %>
+    </span>
     <%= yield %>
   </div>
 </div><!--/row-->

@@ -4,7 +4,13 @@ class VolentersController < ApplicationController
   # GET /volenters
   # GET /volenters.json
   def index
-    @volenters = Volenter.all
+    if volenter_signed_in? && current_volenter.is_super_admin? 
+      @volenters = Volenter.all 
+    elsif volenter_signed_in?
+      @volenters = Volenter.where(center_id: current_volenter.center_id)
+    else
+      @volenters =  Volenter.all
+    end
   end
 
   # GET /volenters/1
@@ -24,8 +30,6 @@ class VolentersController < ApplicationController
   # POST /volenters
   # POST /volenters.json
   def create
-    @volenter = Volenter.new(volenter_params)
-
     respond_to do |format|
       if @volenter.save
         format.html { redirect_to @volenter, notice: 'Volenter was successfully created.' }

@@ -4,5 +4,5 @@ class Center < ActiveRecord::Base
   belongs_to :district
   belongs_to :sub_district
   belongs_to :town_village
-  belongs_to :volenter
+  has_many :volenter
 end

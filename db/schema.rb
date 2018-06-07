@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603074720) do
+ActiveRecord::Schema.define(version: 20180603131944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,17 +77,17 @@ ActiveRecord::Schema.define(version: 20180603074720) do
   create_table "centers", force: :cascade do |t|
     t.string   "name"
     t.text     "address"
-    t.string   "phone_no"
     t.string   "center_head"
-    t.integer  "no_of_volenters"
+    t.integer  "no_of_volenters", default: 0
     t.integer  "country_id"
     t.integer  "state_id"
     t.integer  "district_id"
     t.integer  "sub_district_id"
     t.integer  "town_village_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "volenter_id"
+    t.integer  "phone_number"
   end
 
   add_index "centers", ["country_id"], name: "index_centers_on_country_id", using: :btree

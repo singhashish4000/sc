@@ -2,6 +2,7 @@
 
 class Volenters::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  after_action :try,only:[:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -10,9 +11,18 @@ class Volenters::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    
+    super
+  end
+
+  def try
+    center_id = params[:volenter][:center_id]
+    center = Center.find(center_id)
+    center.volenter_id = current_volenter.id
+    center.no_of_volenters = center.volenter.count
+    center.save
+  end
 
   # GET /resource/edit
   # def edit

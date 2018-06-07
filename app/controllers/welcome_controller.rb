@@ -7,8 +7,7 @@ class WelcomeController < ApplicationController
         @state = State.all
         @district = District.all
         @sub_district = SubDistrict.all
-        @city = TownVillage.all
-       
+        @city = TownVillage.all      
     end   
 
 
@@ -32,7 +31,6 @@ class WelcomeController < ApplicationController
             t = SubDistrict.where(name: city_name).pluck(:id) if city_name.present?
            
             if country_id.present? && state_name.blank? && district_name.blank? && sub_district_name.blank? && city_name.blank?
-                flash.now[:success] = 'Found following center'
                 @center = Center.where(country_id: c) 
             elsif country_id.present? && state_name.present? && district_name.blank? && sub_district_name.blank? && city_name.blank?
                 @center = Center.where(country_id: c,state_id: s)
@@ -43,7 +41,8 @@ class WelcomeController < ApplicationController
             elsif country_id.present? && state_name.present? && district_name.present? && sub_district_name.present? && city_name.present?
                 @center = Center.where(country_id: c,state_id: s,district_id: d,sub_district_id: sd,town_village_id: t)                
             end
-
+            flash.now[:danger] = 'We don\'t have center here.We are working to get here!!.Thank you.' if @center.blank?         
+            flash.now[:info] = 'There are following centers in this area.' if @center.present? 
         end 
         render partial: 'welcome/middle_layer'
     end
@@ -51,8 +50,7 @@ class WelcomeController < ApplicationController
     def search
         if params[:name].blank? 
             flash.now[:danger] = 'Please enter name to search'
-        else 
-            flash.now[:success] = 'Found following center'
+        else  
            name = (params[:name])
            c_id = Country.where("name LIKE ?", "%"+name+"%").pluck(:id);
            s_id = State.where("name LIKE ?", "%"+name+"%").pluck(:id); 
@@ -71,7 +69,8 @@ class WelcomeController < ApplicationController
                 # else
                 #     @center = Center.where("country_id = ?", @c_id)
                 # end            
-            flash.now[:danger] = 'No center here' if @center.blank?          
+                flash.now[:danger] = 'We don\'t have center here.We are working to get here!!.Thank you.' if @center.blank?               
+                flash.now[:info] = 'There are following centers in this area.' if @center.present? 
         end
             render partial: 'welcome/middle_layer'
      end  

@@ -1,66 +1,96 @@
 <div class="container">
-  <div class="col-md-10">
-    <div class="form-area">  
-      <%= simple_form_for(@associate) do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class='row'>
+  <div class="col-md-3" style='float:left;margin-top:2%'>
+    <ul class="list-group">
+       <li class="list-group-item"><a id='one' href='#'>Location Information</a></li>
+       <li class="list-group-item">Contact Information</li>
+       <li class="list-group-item">Other Information</li>
+       <li class="list-group-item">Business Keywords</li>
+       <li class="list-group-item">Add Keywords</li>
+       <li class="list-group-item">View/Remove Keywords</li>
+       <li class="list-group-item">Upload Video/Logo/Pictures</li>
+    </ul>
+ </div> 
+ <div class="col-md-8" style='float:left;margin-left:60px;margin-top:1%'>
+ <div class="form-area">  
+   <%= simple_form_for(@associate) do |f| %>
+     <%= f.error_notification %>
+     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-        <div class="form-inputs">
-          <%= f.input :company_name %>
-          <%= f.input :title %>
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :mobile_number %>
-          <%= f.input :landline_number %>
-          <%= f.input :bussiness_category %>
-          <%= f.input :address_building %>
-          <%= f.input :address_street %>
-          <%= f.input :address_landmark %>
-          <%= f.input :address_area %>
-          <%= f.input :address_city %>
-          <%= f.input :address_pincode %>
-          <%= f.input :contact_person %>
-          <%= f.input :contact_person_designation %>
-          <%= f.input :fax_number %>
-          <%= f.input :fax_number_two %>
-          <%= f.input :toll_free_number %>
-          <%= f.input :toll_free_number_two %>
-          <%= f.input :email_id %>
-          <%= f.input :website %>
-          <%= f.input :display_hours_status %>
-          <%= f.input :year_of_establishment %>
-          <%= f.input :annual_turnover %>
-          <%= f.input :number_of_employees %>
-          <%= f.input :professional_association %>
-          <%= f.input :certifications %>
-          <%= f.association :payment_mode %>
-          <%= f.input :monday_from %>
-          <%= f.input :monday_to %>
-          <%= f.input :monday_status %>
-          <%= f.input :tuesday_from %>
-          <%= f.input :tuesday_to %>
-          <%= f.input :tuesday_status %>
-          <%= f.input :wednesday_from %>
-          <%= f.input :wednesday_to %>
-          <%= f.input :wednesday_status %>
-          <%= f.input :thursday_from %>
-          <%= f.input :thursday_to %>
-          <%= f.input :thursday_status %>
-          <%= f.input :friday_from %>
-          <%= f.input :friday_to %>
-          <%= f.input :friday_status %>
-          <%= f.input :saturday_from %>
-          <%= f.input :saturday_to %>
-          <%= f.input :saturday_status %>
-          <%= f.input :sunday_from %>
-          <%= f.input :sunday_to %>
-          <%= f.input :sunday_status %>
-          <%= f.association :center %>
-        </div>
 
-        <div class="form-actions">
-          <%= f.button :submit %>
-        </div>
-      <% end %>
-  <div>
+     <div class="form-inputs">
+     <div class='display-area'>
+     
+     </div>
+
+     <div class='two'>  
+       <%= f.input :bussiness_category %>
+       <%= f.input :address_building %>
+       <%= f.input :address_street %>
+       <%= f.input :address_landmark %>
+       <%= f.input :address_area %>
+       <%= f.input :address_city %>
+       <%= f.input :address_pincode %>
+     </div>
+     <div class='three'>  
+       <%= f.input :contact_person %>
+       <%= f.input :contact_person_designation %>
+       <%= f.input :fax_number %>
+       <%= f.input :fax_number_two %>
+       <%= f.input :toll_free_number %>
+       <%= f.input :toll_free_number_two %>
+     </div>
+     <div class='four'>  
+       <%= f.input :email_id %>
+       <%= f.input :website %>
+       <%= f.input :display_hours_status %>
+       <%= f.input :year_of_establishment %>
+       <%= f.input :annual_turnover %>
+       <%= f.input :number_of_employees %>
+     </div>
+     <div class='five'>  
+       <%= f.input :professional_association %>
+       <%= f.input :certifications %>
+       <%= f.association :payment_mode %>
+       <%= f.input :monday_from %>
+       <%= f.input :monday_to %>
+       <%= f.input :monday_status %>
+       <%= f.input :tuesday_from %>
+       <%= f.input :tuesday_to %>
+       <%= f.input :tuesday_status %>
+       <%= f.input :wednesday_from %>
+       <%= f.input :wednesday_to %>
+       <%= f.input :wednesday_status %>
+     </div>
+     <div class='six'>  
+       <%= f.input :thursday_from %>
+       <%= f.input :thursday_to %>
+       <%= f.input :thursday_status %>
+       <%= f.input :friday_from %>
+       <%= f.input :friday_to %>
+       <%= f.input :friday_status %>
+       <%= f.input :saturday_from %>
+       <%= f.input :saturday_to %>
+       <%= f.input :saturday_status %>
+       <%= f.input :sunday_from %>
+       <%= f.input :sunday_to %>
+       <%= f.input :sunday_status %>
+       <%= f.association :center %>
+     </div>  
+     </div>
+
+     <div class="form-actions">
+       <%= f.button :submit %>
+     </div>
+   <% end %>
+<div>
+  </div>
 </div>      
+
+<script>
+$(document).ready(function(){
+  $("#one").click(function(){
+    alert();
+  })
+})
+</script>

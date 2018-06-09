@@ -25,7 +25,7 @@ $(document).on('turbolinks:load',function(){
 })
 
 $(document).on('turbolinks:load',function(){
-    console.log('sds');
+
     $('#select-form').on('ajax:complete',function(event, data, status){
         console.log(data.responseText)
         console.log('aa')

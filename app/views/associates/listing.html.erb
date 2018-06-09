@@ -1,0 +1,26 @@
+<%= render :partial => '/welcome/nav' %>
+
+<div class="container" style='margin-top:50px'>
+<div class="col-md-8" style='float:left;margin-left:60px;margin-top:1%'>
+ <h2> Bussiness Listing</h2><br>
+<div class="form-area">  
+  <%= simple_form_for(:associate, :url => new_associate_path,method: :get) do |f| %>
+    <%= f.error_notification %>
+    <div class='two' id='two'>  
+        <%= f.input :company_name %>
+        <%= f.input :title %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :mobile_number %>
+        <%= f.input :landline_number %>
+        <%= f.input :associate_type, collection: ['Paid','Free'],selected: 'Paid' %>
+    </div>
+    <br> 
+    <%=link_to 'Paid Listing', new_associate_path(:state => 'paid')%><br>
+    <br>
+    <%=link_to 'Free Listing', new_associate_path(:state => 'free') %>
+    <div class="form-actions">
+      <%= f.button :submit, 'Next' %>
+    </div>
+<% end %>
+</div>    

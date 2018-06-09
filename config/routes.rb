@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'search_center', to: 'welcome#search'
 
+  get 'associate/listing', to: 'associates#listing'
+
   get '/populate_state_from_selected_country' => 'centers#populate_state_from_selected_country'
 
   get '/populate_district_from_selected_state' => 'centers#populate_district_from_selected_state'

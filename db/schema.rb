@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603131944) do
+ActiveRecord::Schema.define(version: 20180609172240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "associate_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "associates", force: :cascade do |t|
     t.string   "company_name"
@@ -69,8 +75,10 @@ ActiveRecord::Schema.define(version: 20180603131944) do
     t.integer  "center_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "associate_category_id"
   end
 
+  add_index "associates", ["associate_category_id"], name: "index_associates_on_associate_category_id", using: :btree
   add_index "associates", ["center_id"], name: "index_associates_on_center_id", using: :btree
   add_index "associates", ["payment_mode_id"], name: "index_associates_on_payment_mode_id", using: :btree
 
@@ -173,6 +181,7 @@ ActiveRecord::Schema.define(version: 20180603131944) do
   add_index "volenters", ["email"], name: "index_volenters_on_email", unique: true, using: :btree
   add_index "volenters", ["reset_password_token"], name: "index_volenters_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "associates", "associate_categories"
   add_foreign_key "associates", "centers"
   add_foreign_key "associates", "payment_modes"
   add_foreign_key "centers", "countries"

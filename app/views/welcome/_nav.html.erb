@@ -13,7 +13,7 @@
       <% if  volenter_signed_in? && current_volenter.is_admin? %>
         <li><%= link_to "Create Center", new_center_path  %></li>
       <% end %>  
-      <li><%= link_to "Bussiness Listing", new_associate_path  %></li>
+      <li><%= link_to "Bussiness Listing", associate_listing_path  %></li>
       <li><%= link_to "Volenters", volenters_path  %></li>
       <div class="dropdown">
       <button class="dropbtn">Account</button>

@@ -14,12 +14,17 @@ class AssociatesController < ApplicationController
 
   # GET /associates/new
   def new
+    @state = params[:associate][:associate_type]
     @associate = Associate.new
-  end
+    end
 
   # GET /associates/1/edit
   def edit
   end
+
+  def listing
+
+  end 
 
   # POST /associates
   # POST /associates.json

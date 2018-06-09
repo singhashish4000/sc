@@ -1,0 +1,28 @@
+<%= render :partial => '/welcome/nav' %>
+
+<div class="container" style='margin-top:50px'>
+<h2>Sign up</h2>
+  <div class="col-md-10">
+    <div class="form-area">  
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :name, required: true , autofocus: true%>
+            <%= f.input :age, required: true%>
+            <%= f.input :gender, required: true%>
+            <%= f.input :address, required: true%>
+            <%= f.input :phone_no, required: true%>
+            <%= f.input :adhaar_no, required: true%>
+            <%= f.input :email, required: true %>
+            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+            <%= f.input :password_confirmation, required: true %>
+            <%= f.association :center, required: true %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up" %>
+          </div>
+        <% end %>
+<%= render "volenters/shared/links" %>
+</div></div> 

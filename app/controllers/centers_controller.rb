@@ -151,6 +151,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def center_params
-      params.require(:center).permit(:name, :address, :no_of_volunters, :country_id, :state_id, :district_id, :sub_district_id, :town_village_id)
+      params.require(:center).permit(:name, :address, :no_of_volenters, :country_id, :state_id, :district_id, :sub_district_id, :town_village_id)
     end
 end

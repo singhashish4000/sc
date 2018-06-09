@@ -1,22 +1,22 @@
-
-    <div class='results-block'>
+<% if params[:action] == 'search' || params[:action] == 'select' %>
+  <div class='results-block container' style='text-align:center'>
+      <br>
         <%= bootstrap_flash %>
     </div>
- 
-<% if @center %>
-<br>
+<% end %> 
+<% if @center.present? %>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 results" >
-      <h3>List of All Center's:</h3>
+      <h3>List of All Centers:</h3>
       <div class="container">
   <div class="col-md-10">
-      <table class="table table-hover">
+      <table class="table table-hover table-striped">
         <thead>
           <tr>
             <th>Name</th>
             <th>Address</th>
-            <th>No of volunters</th>
+            <th>No of volenters</th>
             <th>Country</th>
             <th>State</th>
             <th>District</th>
@@ -47,7 +47,7 @@
             <tr>
               <td><%= link_to center.name, center %></td>
               <td><%= center.address %></td>
-              <td><%= center.no_of_volunters %></td>
+              <td><%= center.volenter.count %></td>
               <td><%= @center_country %></td>
               <td><%= @center_state %></td>
               <td><%= @center_district %></td>
@@ -62,4 +62,6 @@
     </div>
   </div>
 </div>
+<% else %>
+  <h3 style='text-align:center '> We are working to get here soon.</h3>
 <% end %> 

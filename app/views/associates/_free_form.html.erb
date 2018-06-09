@@ -1,0 +1,64 @@
+<div class="container">
+  <div class='row'>
+  <div class="col-md-3" style='float:left;margin-top:2%'>
+    <ul class="list-group">
+       <li class="list-group-item"><a id='one' href='#'>Location Information</a></li>
+       <li class="list-group-item"><a id='one' href='#two'>Contact Information</a></li>
+    </ul>
+ </div> 
+ <div class="col-md-8" style='float:left;margin-left:60px;margin-top:1%'>
+ <div class="form-area">  
+   <%= simple_form_for(@associate) do |f| %>
+     <%= f.error_notification %>
+     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+     <div class="form-inputs">
+     <div class='display-area'>
+     
+     </div>
+
+     <div class='two' id='two'>  
+        <%= f.association :associate_category %>
+        <%= f.input :address_building %>
+       <%= f.input :address_street %>
+       <%= f.input :address_landmark %>
+       <%= f.input :address_area %>
+       <%= f.input :address_city %>
+       <%= f.input :address_pincode %>
+     </div>
+     <div class='three' id='three'>  
+       <%= f.input :contact_person %>
+       <%= f.input :contact_person_designation %>
+       <%= f.input :fax_number %>
+       <%= f.input :fax_number_two %>
+       <%= f.input :toll_free_number %>
+       <%= f.input :toll_free_number_two %>
+     </div>
+     <div class='four' id='four'>  
+       <%= f.input :email_id %>
+       <%= f.input :website %>
+       <%= f.input :display_hours_status %>
+       <%= f.input :year_of_establishment %>
+       <%= f.input :annual_turnover %>
+       <%= f.input :number_of_employees %>
+     </div>
+     <div class='six' id='six'>  
+       <%= f.association :center %>
+     </div>  
+     </div>
+
+     <div class="form-actions">
+       <%= f.button :submit %>
+     </div>
+   <% end %>
+<div>
+  </div>
+</div>      
+
+<script>
+$(document).ready(function(){
+  $("#one").click(function(){
+          
+  })
+})
+</script>

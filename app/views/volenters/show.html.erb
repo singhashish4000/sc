@@ -1,0 +1,51 @@
+<%= render :partial => '/welcome/nav' %>
+
+<div class="container" style='margin-top:50px'>
+<h2>Profile info</h2>
+  <div class="col-md-10">
+    <p id="notice"><%= notice %></p>
+
+    <%
+        center_name = Center.find(@volenter.center)
+        @center_name = center_name.name
+    %>
+
+    <p>
+      <strong>Name:</strong>
+      <%= @volenter.name %>
+    </p>
+
+    <p>
+      <strong>Age:</strong>
+      <%= @volenter.age %>
+    </p>
+
+    <p>
+      <strong>Gender:</strong>
+      <%= @volenter.gender %>
+    </p>
+
+    <p>
+      <strong>Address:</strong>
+      <%= @volenter.address %>
+    </p>
+
+    <p>
+      <strong>Phone no:</strong>
+      <%= @volenter.phone_no %>
+    </p>
+
+    <p>
+      <strong>Adhaar no:</strong>
+      <%= @volenter.adhaar_no %>
+    </p>
+
+    <p>
+      <strong>Center:</strong>
+      <%= @center_name %>
+    </p>
+
+    <%= link_to 'Edit', edit_volenter_path(@volenter) %> |
+    <%= link_to 'Back', volenters_path %>
+    </div>
+  </div>      

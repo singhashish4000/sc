@@ -14,16 +14,63 @@ class AssociatesController < ApplicationController
 
   # GET /associates/new
   def new
-    @state = params[:associate][:associate_type]
+    if params[:phone_number].present?
+      session[:phone_number] = params[:phone_number]
+      session[:country_code] = params[:country_code]
+
+       @response = Authy::PhoneVerification.start(
+        via: params[:method],
+        country_code: params[:country_code],
+        phone_number: params[:phone_number]
+      )
+    
+      if @response.ok?
+         'ok'
+        redirect_to  verification_path,  notice: 'Plese enter Verification code'
+      elsif @response.errors.present?
+         @response.errors.each do |key, message| 
+          redirect_to associate_listing_path ,  alert: message
+        end 
+      end
+    end
+
+    if params[:associate].present?
+     @state = params[:associate][:associate_type] 
+     session[:state] = @state
+    elsif params[:state].present?
+      @state =  params[:state]
+      session[:state] = @state
+    else
+      render :new
+    end
     @associate = Associate.new
     end
 
+    def verify
+    end
+
+    def verify2
+       @response = Authy::PhoneVerification.check(
+        verification_code: params[:code],
+        country_code: session[:country_code],
+        phone_number: session[:phone_number]
+      )
+      if @response.ok?
+        session[:phone_number] = nil
+        session[:country_code] = nil
+        redirect_to controller: 'associates', action: 'new', state: session['state']
+      elsif @response.errors.present?
+        @response.errors.each do |key, message| 
+          redirect_to verification_path ,  alert: message   
+        end 
+      end 
+
+    end
   # GET /associates/1/edit
   def edit
   end
 
   def listing
-
   end 
 
   # POST /associates

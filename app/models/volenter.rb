@@ -4,4 +4,5 @@ class Volenter < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :center
+  has_many :associates
 end

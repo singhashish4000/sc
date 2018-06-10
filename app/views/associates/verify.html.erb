@@ -1,0 +1,24 @@
+<%= render :partial => '/welcome/nav' %>
+
+<div class="container" style='margin-top:50px'>
+<% if @response %>
+<% @response.errors.each do |key, message| %>
+  <p><%= message %></p>
+<% end %>
+<% end %>
+<div class="col-md-8" style='float:left;margin-left:60px;margin-top:1%'>
+ <h2> Verify PhoneNumber</h2><br>
+  <div class="form-area">  
+ 
+    <%= form_tag(verification2_path, method: :post) do -%>
+
+      <div >
+        <%= text_field_tag :code, params[:code],placeholder:"Enter the code sent to your mobile number:", 
+        autofocus: true, class: 'form-control search-box input-md' %>
+      </div><br>
+      <%= button_tag "Verify",class: 'btn btn-md btn-primary' %>
+
+    <% end -%>
+    
+  </div>  
+</div>     

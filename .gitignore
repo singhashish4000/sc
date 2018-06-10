@@ -12,4 +12,7 @@
 !/log/.keep
 /tmp
 
-/config/secrets.yml
+/config/secrets.ymlconfig/secrets.yml
+
+# Don't check in credentials 
+config/env.yml

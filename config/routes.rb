@@ -14,6 +14,12 @@ Rails.application.routes.draw do
 
   get 'search_center', to: 'welcome#search'
 
+  get 'verification' ,to: 'associates#verify'
+
+  #get 'verification2' ,to: 'associates#verify2'
+
+  post 'verification2' ,to: 'associates#verify2'
+
   get 'associate/listing', to: 'associates#listing'
 
   get '/populate_state_from_selected_country' => 'centers#populate_state_from_selected_country'

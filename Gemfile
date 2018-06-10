@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 gem 'simple_form'
 
+
+
+gem 'envyable'
+gem 'authy'
+
 gem 'devise'
 
 gem 'bootstrap-generators', '~> 3.3.4'
